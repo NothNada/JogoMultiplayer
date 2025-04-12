@@ -39,7 +39,7 @@ io.on('connection',(socket)=>{
         color:randomColor(),
     };
 
-    socket.emit('setup',players);
+    socket.emit('setup',players[socket.id]);
     updatePlayersF();
 
     socket.on('disconnect', () => {

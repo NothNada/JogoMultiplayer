@@ -34,11 +34,12 @@ io.on('connection',(socket)=>{
     console.log('Cliente conectado: ',socket.id);
 
     players[socket.id] = {
+        id:socket.id,
         position:randomPosition(),
         color:randomColor(),
     };
 
-    socket.emit('setup',players[socket.id]);
+    socket.emit('setup',players);
     updatePlayersF();
 
     socket.on('disconnect', () => {

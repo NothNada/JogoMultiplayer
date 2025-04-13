@@ -1,5 +1,3 @@
----
-
 # 🕹️ Jogo Multiplayer com React-Three-Fiber (R3F) + Socket.io
 
 Este é um jogo multiplayer 3D desenvolvido com **React-Three-Fiber (R3F)** no front-end e **Socket.io** para comunicação em tempo real.  

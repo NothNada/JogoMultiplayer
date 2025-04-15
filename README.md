@@ -41,4 +41,8 @@ A renderização 3D é feita com **React-Three-Fiber (R3F)**, e a comunicação 
 - **Three.js**
 - **Nodemon**
 
+<<<<<<< HEAD
 ---
+=======
+---
+>>>>>>> e6b785e3a8ec3c2ffd25d87a87c33d5b6d7056b9

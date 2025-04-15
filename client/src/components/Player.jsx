@@ -1,10 +1,9 @@
 import { Box } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import { useRef } from 'react';
-import { Vector3 } from 'three';
+import { useEffect, useRef } from 'react';
+import { MathUtils, Vector3, Quaternion, Euler } from 'three';
 
-export default function Player({ player }){
-
+export default function Player({ player }) {
     const container = useRef();
     const character = useRef();
     const cameraTarget = useRef();
@@ -12,8 +11,14 @@ export default function Player({ player }){
     const cameraWorldPosition = useRef(new Vector3());
     const cameralookAtWorldPosition = useRef(new Vector3());
     const cameralookAt = useRef(new Vector3());
-
+    
     useFrame(({ camera }) => {
+
+        container.current.rotation.y = MathUtils.lerp(
+            container.current.rotation.y,
+            player.rotation2,
+            0.1
+        );
 
         // Atualizar posições da câmera
         cameraPosition.current.getWorldPosition(cameraWorldPosition.current);
@@ -25,10 +30,10 @@ export default function Player({ player }){
         camera.lookAt(cameralookAt.current);
     });
 
-    return(
+    return (
         <group position={player.position}>
             <group ref={character}>
-                <Box position={[0, 0, 0]} args={[1, 1, 1]}>
+                <Box position={[0, 0, 0]} quaternion={player.rotation} args={[1, 1, 1]}>
                     <meshStandardMaterial color={player.color} />
                 </Box>
                 <group ref={container}>
@@ -36,6 +41,6 @@ export default function Player({ player }){
                     <group ref={cameraPosition} position={[0, 7, -10]} />
                 </group>
             </group>
-        </group> 
-    )
+        </group>  
+    );
 }

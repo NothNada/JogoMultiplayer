@@ -1,19 +1,19 @@
 import { Server } from 'socket.io';
+import { createServer } from 'http';
 import RAPIER from '@dimforge/rapier3d-compat';
-import { createServer } from 'http'; // Importa o módulo HTTP
 
 await RAPIER.init();
 
-const httpServer = createServer(); // Cria um servidor HTTP básico
+const httpServer = createServer();
 
-const io = new Server(httpServer, { // Passa o servidor HTTP para o Socket.IO
+const io = new Server(httpServer, {
   cors: {
     origin: "*",
   },
 });
 
 const PORT = 3001;
-const HOST = '192.168.2.52'; // Seu IP local
+const HOST = '127.0.0.1';
 
 httpServer.listen(PORT, HOST, () => {
   console.log(`Servidor Socket.IO rodando em http://${HOST}:${PORT}`);
@@ -38,7 +38,7 @@ objects.push({
 });
 
 const randomPosition = () => {
-  return new RAPIER.Vector3(Math.floor(Math.random() * 6),0,Math.floor(Math.random() * 6));
+  return new RAPIER.Vector3(Math.floor(Math.random() * 6),1,Math.floor(Math.random() * 6));
 };
 
 const randomColor = () => {
@@ -119,7 +119,7 @@ io.on('connection', (socket) => {
   socket.on('move', (data) => {
 
     movePlayer(socket.id,data);
-
+    
     updatePlayersF();
   });
 

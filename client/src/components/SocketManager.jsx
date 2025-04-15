@@ -19,7 +19,6 @@ export const SocketManager = ({ handlerSetup, handlerPlayers }) => {
             handlerSetup(data);
         }
         function onUpdatePlayers(data){
-            console.log(data);
             handlerPlayers(data);
         }
 

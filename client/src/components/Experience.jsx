@@ -17,7 +17,6 @@ export default function Experience(){
     function handlerPlayers(data){
         
         if(playerRef.current){
-            console.log("antes:",data);
             Object.entries(data).forEach((element)=>{
                 if (element[0] === playerRef.current.id){
                     
@@ -25,7 +24,6 @@ export default function Experience(){
                 }
             });
         }
-        console.log("depois:",data);
         setPlayers(data);
     }
     

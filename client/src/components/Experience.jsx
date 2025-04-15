@@ -26,10 +26,14 @@ export default function Experience(){
         }
         setPlayers(data);
     }
+
+    function handlerObjects(data){
+
+    }
     
     return (
         <>
-            <SocketManager handlerSetup={handlerSetup} handlerPlayers={handlerPlayers}/>
+            <SocketManager handlerSetup={handlerSetup} handlerPlayers={handlerPlayers} handlerObjects={handlerObjects}/>
             <ambientLight intensity={0.5} />
             <directionalLight position={[-10, 10, 0]} intensity={2} />
             <OrbitControls/>
